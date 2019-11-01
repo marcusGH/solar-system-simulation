@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+import argparse
 
-#siden prosjektet har endt opp som veldig omfattende, har jeg delt opp koden i flere filer
-#jeg importerer så delene av koden etter hvert som jeg trenger den
+#fetch other files
 from simulation import simulate
 from planatary_systems import solar_system, binary_star_system, jupiter_system, three_body_system
 from random import seed
@@ -13,26 +13,35 @@ Bruk "ned"- og "opp"-tastene for å zoome hhv. ut og inn
 og "asdw" for å bevege deg rundt.
 """
 
-# -*- coding: utf-8 -*-
+""" ----------------- fetch optional arguments ---------------------------- """
 
-#for å unngå mest mulige globale variabler, er hovedoperasjonene i en funksjon
+parser = argparse.ArgumentParser(description = "Process optional simulation arguments")
+
+parser.add_argument("deltat", type=float, 
+    help="The deltat time (deltat) determines the length of the simulation timesteps in seconds") 
+parser.add_argument("planet", type=str,
+    help="The planet determines which planet to be simulated")
+
+print(parser.format_help())
+args = parser.parse_args()
+
 def main():    
     """ -------------initialbetingelser for simulasjonen -------------------"""
     #antall sekunder vi går mellom hvert steg
-    deltat =  (60)
+    deltat =  args.deltat
     #feilmargin for vinkelen til planeten
     err = .2            #antall grader
     #random seed for random generatoren
     seed(42)
     #planeten/månen vi ønsker å observere rundetiden til
-    planet = ""
+    planet = args.planet
     #systemet vi skal animere
     system = solar_system(planet)
     #planeten vi setter i sentrum av solsystemet
-    centre = "Moon"
+    centre = ""
     #vil vi se når planeten går rundt sentrumet i sin abolsutte bane, 
     #eller relativt til et annet legeme (sentrumet til planetens bane)?
-    relative_orbit = True
+    relative_orbit = False
     
     """ -------------initialbetingelser for grafikken ----------------------"""
     #skalar slik at ting får plass i turtle-grafikkfeltet
