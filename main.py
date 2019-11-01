@@ -19,8 +19,8 @@ parser = argparse.ArgumentParser(description = "Process optional simulation argu
 
 parser.add_argument("deltat", type=float, 
     help="The deltat time (deltat) determines the length of the simulation timesteps in seconds") 
-parser.add_argument("planet", type=str,
-    help="The planet determines which planet to be simulated")
+# parser.add_argument("planet", type=str,
+    # help="The planet determines which planet to be simulated")
 
 print(parser.format_help())
 args = parser.parse_args()
@@ -34,7 +34,7 @@ def main():
     #random seed for random generatoren
     seed(42)
     #planeten/månen vi ønsker å observere rundetiden til
-    planet = args.planet
+    planet = ""
     #systemet vi skal animere
     system = solar_system(planet)
     #planeten vi setter i sentrum av solsystemet
