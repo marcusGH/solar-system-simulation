@@ -3,9 +3,15 @@
 A numeric simulation of our _current_ solar system.
 
 
-## Quick user guide
+## Instalation guide
 
-### Running the simulation
+### Dependencies
+
+- Python 3 (I think any version should be fine)
+- Numpy (Install with ```pip3 install numpy```
+  - You can install the ```pip``` command with ```sudo apt install python3-pip```
+
+### Cloning the repository and running the simulation
 
 1. Navigate to a folder where you want to store the program. 
 2. Use the command ```git clone https://github.com/marcusGH/solar-system-simulation.git .``` to clone the repository into that folder.
